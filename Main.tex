@@ -25,7 +25,6 @@
 \usepackage{hyperref}
 % fonts packages
 \usepackage{ragged2e} % Justified typesetting
-\usepackage{tgbonum} % fonts
 
 % For References Only
 \usepackage[style=authortitle,backend=bibtex]{biblatex}
@@ -33,6 +32,22 @@
 \AtBeginBibliography{\tiny} % Specify font size (Size matters)
 \renewcommand{\footnotesize}{\tiny}
 
+% For adding code blocks
+\usepackage{listings}
+\lstset
+{
+    language=[LaTeX]TeX,
+    breaklines=true,
+    basicstyle=\tt\scriptsize,
+    keywordstyle=\color{blue},
+    identifierstyle=\color{magenta},
+    commentstyle=\color{red},
+    rulecolor=\color{black},
+    numbers=left,
+    numberstyle=\tiny\color{black},
+    % framexleftmargin=15pt,
+    frame = single,
+}
 
 
 \setbeamertemplate{footline}
@@ -65,32 +80,34 @@
 \date{May 2019}
 
 \begin{document}
+
+% To define the cover-page here .. I prefer this
 {
-\usebackgroundtemplate{\includegraphics[width=1.\paperwidth, height=1.\paperheight]{cover169.pdf}} % To add a background for this slide XD -  change it
-% -----------------------Cover page
-\begin{frame}
+\usebackgroundtemplate{\includegraphics[width=1.\paperwidth, height=1.\paperheight]{cover169.pdf}} % To add a background for this slide XD - change it
+\coverpage{
 \titlepage{~}
+% To add additional text to the title components 
 {\newline Supervisor: Prof. Katrin Beyer}
-\end{frame}
+}
 }
 
-\setbeamertemplate{logo}{} % To override the logo from the other slides
+\setbeamertemplate{logo}{} % To override the logo from the other slides and delete it completely
+
 
 % -----------------------Table of contents TOC Three Styles
-
 % Explicitly split the TOC if it's too long
-\begin{frame}[allowframebreaks]{Outlines}
-\tableofcontents[sections={1-3}] % Explicitly split TOC
-\framebreak
-\tableofcontents[sections={4-7}] % Explicitly split TOC
-\end{frame}
-\normalsize
+% \begin{frame}[allowframebreaks]{Outlines}
+% \tableofcontents[sections={1-3}] % Explicitly split TOC
+% \framebreak
+% \tableofcontents[sections={4-7}] % Explicitly split TOC
+% \end{frame}
+% \normalsize
 
-% Just a normal TOC 
-\begin{frame}[allowframebreaks]{Outlines}
-\tableofcontents
-\end{frame}
-\normalsize
+% % Just a normal TOC 
+% \begin{frame}[allowframebreaks]{Outlines}
+% \tableofcontents
+% \end{frame}
+% \normalsize
 
 % Use smart division for the TOC
 \begin{frame}[allowframebreaks]{Outlines}
@@ -120,14 +137,8 @@
   }
 }
 
-
-
-
 % -----------------------Introduction
-
-
 \section{Introduction}
-
 
 \breakingframe{
 \begin{textblock*}{3cm}[0.5,0.5](0.5\textwidth,  0.5\textheight)
@@ -144,33 +155,115 @@
 \end{textblock*}
 \end{frame}
 
+\subsection{Cover page}
+\begin{frame}[fragile]
+\frametitle{Cover page}
+    To define the cover page use the following code:
+    \vspace{10pt}
+    \begin{lstlisting}
+    { % <-- Important to add those brackets; to affect only the background in this frame.
+    \usebackgroundtemplate{\includegraphics[]{}} % <-- Define the background here
+        \coverpage{
+            \titlepage % make the title here
+            {\newline Additional text like the supervisors, jury .. etc}
+        }
+        }
+    } % <-- end of the environment
+    \end{lstlisting}
+    \vspace{10pt}
+\end{frame}
+
+\subsection{Table of contents (TOC)}
+\begin{frame}[fragile]
+\frametitle{TOC options}
+    \vspace{5pt}
+    \begin{lstlisting}
+        \tableofcontents % <-- Traditional TOC
+    \end{lstlisting}
+    \vspace{5pt}
+    \begin{lstlisting}
+        \tableofcontents[sections={1-3}] % <-- Explicitly split TOC
+    \end{lstlisting}
+    \vspace{5pt}
+    \begin{lstlisting}
+    \usepackage{multicol}
+    \begin{multicols}{2} % <-- Smart division (2, 3, ..etc any number of columns)
+        \tableofcontents
+    \end{multicols}
+    \end{lstlisting}
+    \vspace{5pt}
+    And define the frame to automatically divide itself when the TOC is too long to fit in a single frame:
+    \begin{lstlisting}
+    % \begin{frame}[allowframebreaks]{Table of contents}
+    % \end{frame}
+    \end{lstlisting}
+\end{frame}
+
+\section{How to use?}
+\breakingframe{
+    \begin{textblock*}{5cm}[0.3,0.5](0.5\textwidth, 0.5\textheight)
+        \textbf{\Huge{How to use?}}
+    \end{textblock*}
+}
+
+\subsection{Beamer blocks}
+\begin{frame}[fragile]
+\frametitle{How to use blocks?}
+    Basically, the blocks style have been modified in "beamer" in this customized version. Programmatic samples can be found in the next three slides.
+    \vspace{10pt}
+    \begin{lstlisting}
+        \begin{block}{The block title}
+            The block body .. add meaningful stuff
+        \end{block}
+    \end{lstlisting}
+    \vspace{10pt}
+    It can be used for definitions, equations, theories, examples, alerts, and important stuff to highlight.
+\end{frame}
+
 \begin{frame}
 \frametitle{Blocky blocky}
-
 \begin{block}{Just a Block}
 \lipsum[1]
 \end{block}
-
 \end{frame}
 
 \begin{frame}
 \frametitle{Blocky blocky}
-
 \begin{exampleblock}{Example Block}
 \lipsum[1]
 \end{exampleblock}
-
 \end{frame}
-
 
 \begin{frame}
 \frametitle{Blocky blocky}
-
 \begin{alertblock}{Alert Block}
 \lipsum[1]
 \end{alertblock}
-
 \end{frame}
+
+\subsection{Frames breaker}
+\begin{frame}[fragile]
+\frametitle{How to use framebreakings?}
+    In this template, and only this, I defined a "framebreaking" template frame that should not hold any useful information. The background of this frame is pinkish solid and it is not countable as a separate frame. You can use this as a transitioning page between different topics or for any funny funky stuff to release the tense of the poor audience during your presentation.
+    \vspace{10pt}
+    \begin{lstlisting}
+        \breakingframe{
+            Put your contents here, such as images, text ..etc. Be as silly as possible .. or not!
+        }
+    \end{lstlisting}
+    \vspace{10pt}
+    Look at the next slide, in code, as an example!
+\end{frame}
+
+\breakingframe{
+    \begin{textblock*}{10cm}[0.40,0.5](0.55\textwidth, 0.5\textheight)
+        \textbf{\Huge{I'm just an example!}}
+    \end{textblock*}
+    
+    \begin{textblock*}{7cm}[0.40,0.5](0.4\textwidth, 0.8\textheight)
+        \includegraphics[height = 0.3\textheight]{cat.jpeg}
+    \end{textblock*}
+}
 
 {
 \usebackgroundtemplate{\includegraphics[width=1.\paperwidth]{Coordinates.pdf}}

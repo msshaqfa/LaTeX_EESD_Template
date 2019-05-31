@@ -1,3 +1,5 @@
+% Mahmoud S. Shaqfa - EESD lab. - EPFL
+% Email: mahmoud.shaqfa@epfl.ch
 
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{EESD}
@@ -75,7 +77,36 @@
 
 
 
-% -------- Special frames
+% -------- Special frames ---------
+
+\newcommand{\coverpage}[1]{
+{
+    \setbeamertemplate{footline}
+    {
+      \vspace{-1.5ex}
+      \leavevmode
+      \hbox{
+      \hspace{-2ex}
+    
+      \begin{beamercolorbox}[wd=.333333\paperwidth, ht=2.25ex,dp=1.25ex,center]{footer color3}%
+        \usebeamerfont{author in head/foot}\insertshortauthor
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[wd=.333333\paperwidth, ht=2.25ex, dp=1.25ex, center]{footer color2}%
+        \usebeamerfont{header color}\insertshorttitle
+      \end{beamercolorbox}%
+      \begin{beamercolorbox}[wd=.343333\paperwidth, ht=2.25ex, dp=1.25ex, right]{footer color1}%
+        \usebeamerfont{footer color3}\insertshortdate{}\hspace*{6em}
+        ~~~~~~~~\hspace*{2ex} 
+      \end{beamercolorbox}
+      }
+      \vskip0pt%
+    }
+    \setbeamercolor{background canvas}{}
+    \begin{frame}[t, noframenumbering, allowframebreaks]{}
+        #1
+    \end{frame}
+}
+}
 
 \newcommand{\breakingframe}[1]{
 {
@@ -101,7 +132,6 @@
     }
 
     \setbeamercolor{background canvas}{bg=beamerfooter1}
-    % \setbeamertemplate{footline}{}
     \begin{frame}[t, noframenumbering, allowframebreaks]{}
         #1
     \end{frame}
