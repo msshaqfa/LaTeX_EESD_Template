@@ -110,7 +110,7 @@
 % \normalsize
 
 % Use smart division for the TOC
-\begin{frame}[allowframebreaks]{Outlines}
+\begin{frame}{Outlines}
 \begin{multicols}{2}
 \tableofcontents
 \end{multicols}
@@ -170,6 +170,7 @@
         }
     } % <-- end of the environment
     \end{lstlisting}
+    \texttt{\small{\textcolor{red}{\textbf{A dummy note}}: to define a very good background you can create a PDF file of the slide size and place it with any graphical effects by using Inkscape or Illustrator (see ../Figures/cover169.pdf or ../Figures/cover43.pdf).}}
     \vspace{10pt}
 \end{frame}
 
@@ -221,21 +222,21 @@
 \end{frame}
 
 \begin{frame}
-\frametitle{Blocky blocky}
+\frametitle{Blocky block}
 \begin{block}{Just a Block}
 \lipsum[1]
 \end{block}
 \end{frame}
 
 \begin{frame}
-\frametitle{Blocky blocky}
+\frametitle{Blocky block}
 \begin{exampleblock}{Example Block}
 \lipsum[1]
 \end{exampleblock}
 \end{frame}
 
 \begin{frame}
-\frametitle{Blocky blocky}
+\frametitle{Blocky block}
 \begin{alertblock}{Alert Block}
 \lipsum[1]
 \end{alertblock}
@@ -243,8 +244,8 @@
 
 \subsection{Frames breaker}
 \begin{frame}[fragile]
-\frametitle{How to use framebreakings?}
-    In this template, and only this, I defined a "framebreaking" template frame that should not hold any useful information. The background of this frame is pinkish solid and it is not countable as a separate frame. You can use this as a transitioning page between different topics or for any funny funky stuff to release the tense of the poor audience during your presentation.
+\frametitle{How to use frame-breakings?}
+    In this template, and only this, I defined a "breakingframe" template frame that should not hold any useful information. The background of this frame is pinkish solid and it is not countable as a separate frame. You can use this as a transitioning page between different topics or for any funny funky stuff to release the tense of the poor audience during your presentation.
     \vspace{10pt}
     \begin{lstlisting}
         \breakingframe{
@@ -269,9 +270,10 @@
 \usebackgroundtemplate{\includegraphics[width=1.\paperwidth]{Coordinates.pdf}}
 \setbeamertemplate{headline}{}
 \setbeamertemplate{footline}{}
-
 \begin{frame}[t]{}
-
+    \begin{textblock*}{0.001cm}[0.5,0.5](0.5\textwidth, 0.5\textheight)
+    \includegraphics[height = 0.25\textheight]{cat.jpeg}
+    \end{textblock*}
 \end{frame}
 }
 
@@ -293,8 +295,7 @@
 \end{frame}
 
 
-\usebackgroundtemplate{\includegraphics[width=1.\paperwidth]{break.pdf}}
-\begin{frame}[t]{}
+\breakingframe{
 \begin{textblock*}{10cm}(4.7cm,2.8cm)
 \Huge\textbf{\textcolor{black}{State-of-the-art}}
 \end{textblock*}
@@ -302,8 +303,7 @@
 \small\textbf{\textcolor{black}{{\cite{REF:5} (2018)}
 }}
 \end{textblock*}
-\end{frame}
-\usebackgroundtemplate{}
+}
 
 \begin{frame}[t]{The research questions}\vspace{10pt}
     \begin{textblock*}{13cm}(1.3cm,2.8cm)
@@ -315,14 +315,11 @@
     \end{textblock*}
 \end{frame}
 
-\usebackgroundtemplate{\includegraphics[width=1.\paperwidth]{break.pdf}}
-\begin{frame}[t]{}
+\breakingframe{
 \begin{textblock*}{10cm}(3.7cm,2.9cm)
 \Huge\textbf{\textcolor{black}{Why we are shifting to 3D micro-mechanical modeling?}}
 \end{textblock*}
-\end{frame}
-\usebackgroundtemplate{}
-
+}
 
 
 \begin{frame}[t]{Motivation: \textcolor{myviolet}{{\textbf{Q1}}}}\vspace{10pt}
@@ -344,13 +341,11 @@
 \end{frame}
 
 
-\usebackgroundtemplate{\includegraphics[width=1.\paperwidth]{break.pdf}}
-\begin{frame}[t]{}
+\breakingframe{
 \begin{textblock*}{13cm}(3.5cm,4cm)
 \Huge\textbf{\textcolor{black}{How to arrange stones?}}
 \end{textblock*}
-\end{frame}
-\usebackgroundtemplate{}
+}
 
 \begin{frame}[t]{Objective function}\vspace{1pt}
 \begin{columns}
@@ -384,20 +379,6 @@
 \end{frame}
 
 
-\subsubsection{Generated sample}
-
-\usebackgroundtemplate{\includegraphics[width=1.\paperwidth]{break.pdf}}
-\begin{frame}[t]{}
-\begin{textblock*}{10cm}(4.3cm,3.2cm)
-\Huge\textbf{\textcolor{black}{The final results}}
-\end{textblock*}
-\begin{textblock*}{10cm}(3.7cm, 5.2cm)
-\normalsize\textbf{\textcolor{black}{Sample size: 700 mm x 400 mm x 500 mm}}
-\end{textblock*}
-\end{frame}
-\usebackgroundtemplate{}
-
-
 \section{Detailed plan}
 
 
@@ -422,15 +403,11 @@
 
 % -----------------------References
 % Thank you slide should be here
-\subsection{Thank you!}
-\usebackgroundtemplate{\includegraphics[width=1.\paperwidth]{break.pdf}}
-\begin{frame}[t]{}
+\breakingframe{
 \begin{textblock*}{10cm}(3.2cm,4cm)
 \Huge\textbf{\textcolor{black}{Merci de votre attention}}
 \end{textblock*}
-\end{frame}
-\usebackgroundtemplate{}
-
+}
 % -----------------------References
 \section{Bibliography}
 % \begin{frame}[allowframebreaks]{\\References}\vspace{4pt}
