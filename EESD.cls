@@ -24,9 +24,9 @@
 \definecolor{beamerfooter3}{rgb}{0.93, 0.19, 0.10}
 
 \setbeamercolor*{header color}{fg=white,bg=black}
-\setbeamercolor*{footer color1}{fg=black,bg=beamerfooter1} % pink
-\setbeamercolor*{footer color2}{fg=white,bg=beamerfooter2} % dark pink
-\setbeamercolor*{footer color3}{fg=white,bg=beamerfooter3} % dark red
+\setbeamercolor*{footer color1}{fg=black}%,bg=beamerfooter1} % pink
+\setbeamercolor*{footer color2}{fg=white}%,bg=beamerfooter2} % dark pink
+\setbeamercolor*{footer color3}{fg=white}%,bg=beamerfooter3} % dark red
 
 \setbeamertemplate{blocks}[rounded][shadow=true]
 
@@ -39,6 +39,12 @@
 \setbeamercolor{block body alerted}{fg = black, bg = violet2}
 \setbeamercolor{block title alerted}{fg=white, bg=violet1}
 
+\pgfdeclarehorizontalshading[beamerfooter1,beamerfooter2,beamerfooter3]
+    {beamer@frametitleshade}{\paperheight}{
+    color(0pt)=(beamerfooter3);
+    color(0.3333\paperwidth)=(beamerfooter2);
+    color(1.056\paperwidth)=(beamerfooter1)
+}
 
 \setbeamertemplate{frametitle}{\vspace{20pt}\color{beamerfooter3}\textbf\insertframetitle}
 
@@ -75,32 +81,40 @@
 
 \addtobeamertemplate{footnote}{}{\vspace{1.5ex}}
 
-
-
 % -------- Special frames ---------
-
 \newcommand{\coverpage}[1]{
 {
-    \setbeamertemplate{footline}
-    {
-      \vspace{-1.5ex}
-      \leavevmode
-      \hbox{
-      \hspace{-2ex}
-    
-      \begin{beamercolorbox}[wd=.333333\paperwidth, ht=2.25ex,dp=1.25ex,center]{footer color3}%
-        \usebeamerfont{author in head/foot}\insertshortauthor
-      \end{beamercolorbox}%
-      \begin{beamercolorbox}[wd=.333333\paperwidth, ht=2.25ex, dp=1.25ex, center]{footer color2}%
-        \usebeamerfont{header color}\insertshorttitle
-      \end{beamercolorbox}%
-      \begin{beamercolorbox}[wd=.343333\paperwidth, ht=2.25ex, dp=1.25ex, right]{footer color1}%
-        \usebeamerfont{footer color3}\insertshortdate{}\hspace*{6em}
-        ~~~~~~~~\hspace*{2ex} 
-      \end{beamercolorbox}
-      }
-      \vskip0pt%
-    }
+    \setbeamertemplate{headline}{
+        \leavevmode
+          \hbox{
+            \begin{beamercolorbox}[wd=1.009\textwidth, ht=2.5ex, dp=1.125ex]{}
+            \end{beamercolorbox}
+          }
+        }
+\setbeamertemplate{footline}
+{
+    \leavevmode%
+    \setbox\beamer@tempbox=\hbox{%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex, center]{footer color3}%
+            \usebeamerfont{author in head/foot}\hspace{2ex}\insertshortauthor
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{footer color2}%
+            \usebeamerfont{title in head/foot}\insertshorttitle
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{footer color1}%
+            \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{6em}~~~~~~~~\hspace*{2ex} 
+        \end{beamercolorbox}%
+        }%
+        \beamer@tempdim=\ht\beamer@tempbox%
+        \advance\beamer@tempdim by 4pt%
+        \begin{pgfpicture}{0pt}{0pt}{\paperwidth}{20pt}
+            \pgfpathrectangle{\pgfpointorigin}{\pgfpoint{\paperwidth}{\beamer@tempdim}}
+            \pgfusepath{clip}
+            \pgftext[left,base]{\pgfuseshading{beamer@frametitleshade}}
+        \end{pgfpicture}
+        \vskip-\beamer@tempdim%
+        \box\beamer@tempbox%    
+}%
     \setbeamercolor{background canvas}{}
     \begin{frame}[t, noframenumbering, allowframebreaks]{}
         #1
@@ -108,28 +122,51 @@
 }
 }
 
+% Define and customize the headline style of slides
+\setbeamertemplate{headline}{%
+\leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=1.000\textwidth, ht=2.5ex, dp=1.125ex]{header color}%
+        \ifx\insertsubsection\empty % no subsection
+            {{~~}\insertsection}%
+        \else % subsection exists
+        \ifx\insertsubsubsection\empty % subsection but no subsubsection
+            {~\insertsection \textcolor{white}{$~~\bullet$} ~\S~\insertsubsection}%
+        \else % subsection and subsubsection exist
+            {~\insertsection \textcolor{white}{$~~\bullet$} ~\S~\insertsubsection \textcolor{white}{$~~\bullet$} ~\S~\insertsubsubsection}%
+        \fi
+        \fi
+    \end{beamercolorbox}%
+  }
+}
+
 \newcommand{\breakingframe}[1]{
 {
+
     \setbeamertemplate{footline}
-    {
-      \vspace{-1.5ex}
-      \leavevmode
-      \hbox{
-      \hspace{-2ex}
-    
-      \begin{beamercolorbox}[wd=.333333\paperwidth, ht=2.25ex,dp=1.25ex,center]{footer color3}%
-        \usebeamerfont{author in head/foot}\insertshortauthor
-      \end{beamercolorbox}%
-      \begin{beamercolorbox}[wd=.333333\paperwidth, ht=2.25ex, dp=1.25ex, center]{footer color2}%
-        \usebeamerfont{header color}\insertshorttitle
-      \end{beamercolorbox}%
-      \begin{beamercolorbox}[wd=.343333\paperwidth, ht=2.25ex, dp=1.25ex, right]{footer color1}%
-        \usebeamerfont{footer color3}\insertshortdate{}\hspace*{6em}
-        ~~~~~~~~\hspace*{2ex} 
-      \end{beamercolorbox}
-      }
-      \vskip0pt%
-    }
+{
+    \leavevmode%
+    \setbox\beamer@tempbox=\hbox{%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex, center]{footer color3}%
+            \usebeamerfont{author in head/foot}\hspace{2ex}\insertshortauthor
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{footer color2}%
+            \usebeamerfont{title in head/foot}\insertshorttitle
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{footer color1}%
+            \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{6em}~~~~~~~~\hspace*{2ex} 
+        \end{beamercolorbox}%
+        }%
+        \beamer@tempdim=\ht\beamer@tempbox%
+        \advance\beamer@tempdim by 4pt%
+        \begin{pgfpicture}{0pt}{0pt}{\paperwidth}{20pt}
+            \pgfpathrectangle{\pgfpointorigin}{\pgfpoint{\paperwidth}{\beamer@tempdim}}
+            \pgfusepath{clip}
+            \pgftext[left,base]{\pgfuseshading{beamer@frametitleshade}}
+        \end{pgfpicture}
+        \vskip-\beamer@tempdim%
+        \box\beamer@tempbox%    
+}%
 
     \setbeamercolor{background canvas}{bg=beamerfooter1}
     \begin{frame}[t, noframenumbering, allowframebreaks]{}
@@ -138,8 +175,28 @@
 }
 }
 
-
-
-
-% Define variables
-%\settoheight{\halfheight}{0.5\pdfpageheight}
+\setbeamertemplate{footline}
+{
+    \leavevmode%
+    \setbox\beamer@tempbox=\hbox{%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex]{footer color3}%
+            \usebeamerfont{author in head/foot}\hspace{2ex}\insertshortauthor
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{footer color2}%
+            \usebeamerfont{title in head/foot}\insertshorttitle
+        \end{beamercolorbox}%
+        \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{footer color1}%
+            \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+            \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
+        \end{beamercolorbox}%
+        }%
+        \beamer@tempdim=\ht\beamer@tempbox%
+        \advance\beamer@tempdim by 4pt%
+        \begin{pgfpicture}{0pt}{0pt}{\paperwidth}{20pt}
+            \pgfpathrectangle{\pgfpointorigin}{\pgfpoint{\paperwidth}{\beamer@tempdim}}
+            \pgfusepath{clip}
+            \pgftext[left,base]{\pgfuseshading{beamer@frametitleshade}}
+        \end{pgfpicture}
+        \vskip-\beamer@tempdim%
+        \box\beamer@tempbox%    
+}%

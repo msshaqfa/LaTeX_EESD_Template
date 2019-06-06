@@ -50,29 +50,7 @@
 }
 
 
-\setbeamertemplate{footline}
-{
-  \vspace{-1.5ex}
-  \leavevmode
-  \hbox{
-  \hspace{-2ex}
-
-  \begin{beamercolorbox}[wd=.333333\paperwidth, ht=2.25ex,dp=1.25ex,center]{footer color3}%
-    \usebeamerfont{author in head/foot}\insertshortauthor
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.333333\paperwidth, ht=2.25ex, dp=1.25ex, center]{footer color2}%
-    \usebeamerfont{header color}\insertshorttitle
-  \end{beamercolorbox}%
-  \begin{beamercolorbox}[wd=.343333\paperwidth, ht=2.25ex, dp=1.25ex, right]{footer color1}%
-    \usebeamerfont{footer color3}\insertshortdate{}\hspace*{6em}
-    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} 
-  \end{beamercolorbox}
-  }
-  \vskip0pt%
-}
-
-
-\author{EESD Official Template}
+\author{The Templater}
 \title[Your tiny title here]{My long, detailed, and flashy title}
 
 \institute[ENAC]{{\'Ecole Polytechnique F\'ed\'erale de Lausanne (EPFL)}{\newline\newline School of Architecture, Civil and Environmental Engineering (ENAC)}}
@@ -101,13 +79,11 @@
 % \framebreak
 % \tableofcontents[sections={4-7}] % Explicitly split TOC
 % \end{frame}
-% \normalsize
 
 % % Just a normal TOC 
 % \begin{frame}[allowframebreaks]{Outlines}
 % \tableofcontents
 % \end{frame}
-% \normalsize
 
 % Use smart division for the TOC
 \begin{frame}{Outlines}
@@ -115,27 +91,6 @@
 \tableofcontents
 \end{multicols}
 \end{frame}
-\normalsize
-
-% Define and customize the headline style of slides
-\setbeamertemplate{headline}{
-\leavevmode
-  \hbox{
-    % if you use aspect ratio 16:9 wd = 1.009 to fill the sides of the bar
-    % if you use aspect ratio 4:6 wd = 1.012 to fill the sides of the bar
-    \begin{beamercolorbox}[wd=1.009\paperwidth, ht=2.5ex, dp=1.125ex]{header color}
-    \ifx\insertsubsection\empty % no subsection
-        {~\insertsection}
-    \else % subsection exists
-    \ifx\insertsubsubsection\empty % subsection but no subsubsection
-        {~\insertsection \textcolor{white}{$~~\bullet$} ~\S~\insertsubsection}
-    \else % subsection and subsubsection exist
-        {~\insertsection \textcolor{white}{$~~\bullet$} ~\S~\insertsubsection \textcolor{white}{$~~\bullet$} ~\S~\insertsubsubsection}
-    \fi
-    \fi
-\end{beamercolorbox}
-  }
-}
 
 % -----------------------Introduction
 \section{Introduction}
@@ -276,7 +231,6 @@
     \end{textblock*}
 \end{frame}
 }
-
 
 \subsection{Preamble}
 \begin{frame}[t]{Preamble}\vspace{4pt}
