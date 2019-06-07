@@ -14,6 +14,8 @@
 % Important packages to be called
 \usepackage{subcaption} % for adding sub-figures
 \usepackage{graphicx}
+\usepackage{tikz} % for cool graphics and drawings
+
 \usepackage[absolute,overlay]{textpos} % To place the figures by coordinates (x,y) - Beamer doesn't support floats XD
 \usepackage{multicol} % To adjust items and stuff automatically in a number of a pre-specified columns
 \graphicspath{{Figures/}}
@@ -49,8 +51,7 @@
     frame = single,
 }
 
-
-\author{The Templater}
+\author{The Templator}
 \title[Your tiny title here]{My long, detailed, and flashy title}
 
 \institute[ENAC]{{\'Ecole Polytechnique F\'ed\'erale de Lausanne (EPFL)}{\newline\newline School of Architecture, Civil and Environmental Engineering (ENAC)}}
@@ -59,9 +60,34 @@
 
 \begin{document}
 
+{ % <-- don't forget the scope resolution (Brackets) to limit the background change only for the cover page; otherwise, it will override the whole document's background :)
+\usebackgroundtemplate{} % To add a background for this slide XD - Empty one
+\coverpage{
+\titlepage{~}
+% To add additional text to the title components 
+{\newline Supervisor: Prof. Katrin Beyer}
+}
+} % <-- and yeah close them too :)
+
 % To define the cover-page here .. I prefer this
 {
 \usebackgroundtemplate{\includegraphics[width=1.\paperwidth, height=1.\paperheight]{cover169.pdf}} % To add a background for this slide XD - change it
+\coverpage{
+\titlepage{~}
+% To add additional text to the title components 
+{\newline Supervisor: Prof. Katrin Beyer}
+}
+}
+
+{
+% Add background and adjust the opacity
+\usebackgroundtemplate{
+\begin{tikzpicture}%
+\node[opacity=0.1]{\includegraphics[width=1.\paperwidth, height=1.\paperheight]{homer-simpson.jpg}
+};%
+\end{tikzpicture}
+} % To add a background for this slide XD - Homer Simpson - Source: https://www.kcbi.org/to-be-understand-the-bible-we-need-to-listen-to-homer-simpson/
+
 \coverpage{
 \titlepage{~}
 % To add additional text to the title components 
@@ -125,8 +151,31 @@
         }
     } % <-- end of the environment
     \end{lstlisting}
-    \texttt{\small{\textcolor{red}{\textbf{A dummy note}}: to define a very good background you can create a PDF file of the slide size and place it with any graphical effects by using Inkscape or Illustrator (see ../Figures/cover169.pdf or ../Figures/cover43.pdf).}}
     \vspace{10pt}
+\end{frame}
+
+\begin{frame}
+\frametitle{Honest-to-god!}
+\begin{columns}
+    \begin{column}{0.7\textwidth}
+    \textcolor{red}{\textbf{A dummy note:}} to define a very \textcolor{blue}{\#swaggy} background you can create a PDF file of the slide size and place it with any graphical effect by using Inkscape\footnotemark or Adobe Illustrator.
+    \begin{block}{Inkscape advice}
+        Make all your drawings/charts vectorized. In this way, they will look important and professional. And use Inkscape it is free, open-source, easy to use, and again FREE! Unfortunately, \LaTeX~ doesn't deal directly with *.SVG, *.EPS, or *.EMF drawings; convert them to *.PDF. *.PDF files come with price! They're bigger in size.
+    \end{block}
+    \end{column}
+    \footcitetext{Inkscape}
+    \begin{column}{0.30\textwidth}
+        \centering{My secret weapon for perfect drawings:
+        \begin{enumerate}
+            \item Blender\footnotemark
+            \item Inkscape
+        \end{enumerate}
+        }
+        \vspace{0.7cm}
+        \includegraphics[height=0.3\textheight]{Blender_Inkscape.pdf}
+    \end{column}
+    \footcitetext{REF:30}
+\end{columns}
 \end{frame}
 
 \subsection{Table of contents (TOC)}
@@ -154,6 +203,43 @@
     % \end{frame}
     \end{lstlisting}
 \end{frame}
+
+\section{EESD logo}
+\breakingframe{
+    \begin{textblock*}{5cm}[0.5,0.5](0.45\textwidth, 0.55\textheight)
+        \includegraphics[height = 0.3\textheight]{EESD_white.pdf}
+    \end{textblock*}
+}
+\subsection{A new visual identity}
+\begin{frame}
+\frametitle{A new visual identity}
+\centering{It has been derived from the new EPFL logo. It reflects the same simplicity and consistency.}
+\end{frame}
+
+\begin{frame}
+\frametitle{The logo}
+\includegraphics[height=0.37\textheight]{EESD_different_bg.pdf}
+\end{frame}
+
+\begin{frame}
+\frametitle{How we do it?}
+\hspace{1.7cm}
+\includegraphics[height=0.7\textheight]{EESD_how_1.pdf}
+\end{frame}
+
+\begin{frame}
+\frametitle{How we do it?}
+\hspace{1.7cm}
+\includegraphics[height=0.7\textheight]{EESD_how_2.pdf}
+\end{frame}
+
+\begin{frame}
+\frametitle{How we do it?}
+\begin{textblock*}{1cm}[0.50,0.5](0.15\textwidth, 0.65\textheight)
+        \includegraphics[height=0.35\textheight]{EESD_how_3.pdf}
+\end{textblock*}
+\end{frame}
+
 
 \section{How to use?}
 \breakingframe{
