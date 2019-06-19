@@ -6,6 +6,21 @@
 \LoadClass[aspectratio = 169, 11pt, xcolor={usenames,dvipsnames}]{beamer}
 % I used 16:9 aspect ratio of the slides; To get the default (4:3) remove the specifier above in-between the [aspectratio = 169] or simply change the value to 43
 % Other possible values are: 1610, 149, 54, 43 and 32.
+% \documentclass[aspectratio=1610]{beamer}
+% Sets aspect ratio to 16:10, and frame size to 160mm by 100mm.
+% 77
+% \documentclass[aspectratio=169]{beamer}
+% Sets aspect ratio to 16:9, and frame size to 160mm by 90mm.
+% \documentclass[aspectratio=149]{beamer}
+% Sets aspect ratio to 14:9, and frame size to 140mm by 90mm.
+% \documentclass[aspectratio=141]{beamer}
+% Sets aspect ratio to 1.41:1, and frame size to 148.5mm by 105mm.
+% \documentclass[aspectratio=54]{beamer}
+% Sets aspect ratio to 5:4, and frame size to 125mm by 100mm.
+% \documentclass[aspectratio=43]{beamer}
+% The default aspect ratio and frame size to 128mm by 96mm. You need not specify this option.
+% \documentclass[aspectratio=32]{beamer}
+% Sets aspect ratio to 3:2, and frame size to 135mm by 90mm.
 
 % ---- My Colors Specifiers ----
 \definecolor{mypink}{rgb}{0.97, 0.56, 0.65}
