@@ -114,10 +114,10 @@
             \usebeamerfont{author in head/foot}\hspace{2ex}\insertshortauthor
         \end{beamercolorbox}%
         \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{footer color2}%
-            \usebeamerfont{title in head/foot}\insertshorttitle
+            % \usebeamerfont{title in head/foot}\insertshorttitle
         \end{beamercolorbox}%
         \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{footer color1}%
-            \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{6em}~~~~~~~~\hspace*{2ex} 
+            \usebeamerfont{title in head/foot}\insertshorttitle{}\hspace*{6em}~~~~~~~~\hspace*{2ex} 
         \end{beamercolorbox}%
         }%
         \beamer@tempdim=\ht\beamer@tempbox%
